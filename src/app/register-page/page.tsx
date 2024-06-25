@@ -1,5 +1,6 @@
 'use client'
 import Link from "next/link"
+import { parse } from "path"
 import { useState } from "react"
 
 type Task = {
@@ -20,7 +21,8 @@ export default function RegisterPage() {
     })
 
     const handleValidDate = (date: Date) => {
-        if (date < new Date()) {
+        const yesterday = new Date(new Date().setHours(12, 0, 0, 0))
+        if (date <  yesterday){
             alert('Data inválida')
             return false
         }
